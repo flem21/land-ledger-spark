@@ -55,30 +55,30 @@ export const PropertySearch: React.FC<PropertySearchProps> = ({ properties, onTr
 
   return (
     <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
+      <Card className="bg-retro-dark border-2 border-retro-terminal shadow-lg">
+        <CardHeader className="border-b border-retro-terminal">
+          <CardTitle className="flex items-center space-x-2 font-retro text-retro-terminal text-xl tracking-wider">
             <Search className="h-5 w-5" />
-            <span>Property Search</span>
+            <span>PROPERTY_SEARCH.EXE</span>
           </CardTitle>
-          <CardDescription>
-            Search for properties by address, owner name, or property ID
+          <CardDescription className="font-terminal text-retro-phosphor">
+            &gt; Search database by address, owner_name, or property_id
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <div className="flex space-x-4">
             <div className="flex-1">
-              <Label htmlFor="search">Search Properties</Label>
+              <Label htmlFor="search" className="font-terminal text-retro-terminal">SEARCH_QUERY:</Label>
               <Input
                 id="search"
-                placeholder="Enter address, owner name, or property ID..."
+                placeholder="> Enter search parameters..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="mt-1"
+                className="mt-1 bg-retro-dark border-retro-terminal text-retro-terminal font-terminal placeholder:text-retro-matrix"
               />
             </div>
             <div className="flex items-end">
-              <Button variant="outline" size="icon">
+              <Button variant="outline" size="icon" className="border-retro-terminal text-retro-terminal hover:bg-retro-terminal hover:text-retro-dark">
                 <Search className="h-4 w-4" />
               </Button>
             </div>
@@ -88,51 +88,56 @@ export const PropertySearch: React.FC<PropertySearchProps> = ({ properties, onTr
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProperties.map((property) => (
-          <Card key={property.id} className="hover:shadow-lg transition-shadow cursor-pointer">
-            <CardHeader className="pb-3">
+          <Card key={property.id} className="bg-retro-dark border-2 border-retro-terminal hover:border-retro-phosphor transition-all duration-300 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-retro-terminal/5 to-transparent group-hover:from-retro-terminal/10"></div>
+            <CardHeader className="pb-3 relative z-10 border-b border-retro-terminal/50">
               <div className="flex items-start justify-between">
-                <CardTitle className="text-lg">{property.address}</CardTitle>
-                <Badge className={getStatusColor(property.status)}>
-                  {property.status}
+                <CardTitle className="text-lg font-terminal text-retro-terminal">{property.address}</CardTitle>
+                <Badge className="bg-retro-matrix text-retro-dark font-terminal border border-retro-terminal">
+                  {property.status.toUpperCase()}
                 </Badge>
               </div>
-              <CardDescription className="flex items-center space-x-1">
+              <CardDescription className="flex items-center space-x-1 font-terminal text-retro-phosphor">
                 <Hash className="h-3 w-3" />
-                <span className="font-mono text-xs">{property.id}</span>
+                <span className="text-xs">{property.id}</span>
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-3 relative z-10">
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div className="flex items-center space-x-2">
-                  <User className="h-4 w-4 text-muted-foreground" />
-                  <span className="font-medium">{property.owner}</span>
+                  <User className="h-4 w-4 text-retro-phosphor" />
+                  <span className="font-terminal text-retro-terminal">{property.owner}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <MapPin className="h-4 w-4 text-muted-foreground" />
-                  <span>{property.area} sq ft</span>
+                  <MapPin className="h-4 w-4 text-retro-phosphor" />
+                  <span className="font-terminal text-retro-terminal">{property.area} sq ft</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <DollarSign className="h-4 w-4 text-muted-foreground" />
-                  <span>${property.value.toLocaleString()}</span>
+                  <DollarSign className="h-4 w-4 text-retro-phosphor" />
+                  <span className="font-terminal text-retro-terminal">${property.value.toLocaleString()}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Calendar className="h-4 w-4 text-muted-foreground" />
-                  <span>{property.registrationDate}</span>
+                  <Calendar className="h-4 w-4 text-retro-phosphor" />
+                  <span className="font-terminal text-retro-terminal">{property.registrationDate}</span>
                 </div>
               </div>
               
-              <div className="pt-3 border-t">
+              <div className="pt-3 border-t border-retro-terminal/50">
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button variant="outline" className="w-full" onClick={() => setSelectedProperty(property)}>
-                      View Details
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-retro-terminal text-retro-terminal hover:bg-retro-terminal hover:text-retro-dark font-terminal"
+                      onClick={() => setSelectedProperty(property)}
+                    >
+                      ACCESS_RECORD
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-md">
+                  <DialogContent className="max-w-md bg-retro-dark border-2 border-retro-terminal">
                     <DialogHeader>
-                      <DialogTitle>Property Details</DialogTitle>
-                      <DialogDescription>
-                        Blockchain record for {property.address}
+                      <DialogTitle className="font-retro text-retro-terminal tracking-wider">PROPERTY_RECORD.LOG</DialogTitle>
+                      <DialogDescription className="font-terminal text-retro-phosphor">
+                        &gt; Blockchain record for {property.address}
                       </DialogDescription>
                     </DialogHeader>
                     

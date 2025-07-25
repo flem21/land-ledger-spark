@@ -94,31 +94,31 @@ export const PropertyRegistration: React.FC<PropertyRegistrationProps> = ({ onRe
 
   return (
     <div className="max-w-2xl mx-auto">
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
+      <Card className="bg-retro-dark border-2 border-retro-terminal shadow-lg">
+        <CardHeader className="border-b border-retro-terminal">
+          <CardTitle className="flex items-center space-x-2 font-retro text-retro-terminal text-xl tracking-wider">
             <Plus className="h-5 w-5" />
-            <span>Register New Property</span>
+            <span>REGISTER_PROPERTY.EXE</span>
           </CardTitle>
-          <CardDescription>
-            Add a new property to the blockchain registry with secure cryptographic verification
+          <CardDescription className="font-terminal text-retro-phosphor">
+            &gt; Add new property to blockchain registry with cryptographic verification
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Property Details */}
             <div className="space-y-4">
               <div>
-                <Label htmlFor="address" className="flex items-center space-x-2">
+                <Label htmlFor="address" className="flex items-center space-x-2 font-terminal text-retro-terminal">
                   <Home className="h-4 w-4" />
-                  <span>Property Address *</span>
+                  <span>PROPERTY_ADDRESS *</span>
                 </Label>
                 <Input
                   id="address"
-                  placeholder="123 Main Street, City, State"
+                  placeholder="> 123 Main Street, City, State"
                   value={formData.address}
                   onChange={(e) => handleInputChange('address', e.target.value)}
-                  className="mt-1"
+                  className="mt-1 bg-retro-dark border-retro-terminal text-retro-terminal font-terminal placeholder:text-retro-matrix"
                   required
                 />
               </div>

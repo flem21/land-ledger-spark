@@ -149,26 +149,36 @@ export const LandRegistry = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-terminal relative overflow-hidden">
+      {/* Retro scanning line effect */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-retro-terminal to-transparent animate-retro-scan opacity-20"></div>
+      </div>
+      
       {/* Header */}
-      <header className="border-b bg-card shadow-sm">
-        <div className="container mx-auto px-4 py-4">
+      <header className="border-b-2 border-retro-terminal bg-card shadow-lg relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-retro-matrix/5 to-transparent"></div>
+        <div className="container mx-auto px-4 py-6 relative z-10">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="p-2 bg-primary rounded-lg">
-                <Home className="h-6 w-6 text-primary-foreground" />
+              <div className="p-3 bg-retro-terminal rounded border-2 border-retro-terminal animate-phosphor-glow">
+                <Home className="h-8 w-8 text-retro-dark" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-foreground">Land Registry</h1>
-                <p className="text-sm text-muted-foreground">Blockchain-powered property management</p>
+                <h1 className="text-3xl font-retro font-bold text-retro-terminal tracking-wider">
+                  LAND_REGISTRY.EXE
+                </h1>
+                <p className="text-sm text-retro-phosphor font-terminal animate-terminal-blink">
+                  &gt; BLOCKCHAIN PROPERTY MANAGEMENT SYSTEM_
+                </p>
               </div>
             </div>
-            <div className="flex items-center space-x-2">
-              <Badge variant="outline" className="bg-success text-success-foreground">
-                Network: Active
+            <div className="flex items-center space-x-3">
+              <Badge className="bg-retro-matrix text-retro-dark font-terminal border-2 border-retro-terminal">
+                NET_STATUS: ONLINE
               </Badge>
-              <Badge variant="outline" className="bg-registry-blue text-registry-blue-foreground">
-                Block: #1,234,567
+              <Badge className="bg-retro-terminal text-retro-dark font-terminal border-2 border-retro-terminal">
+                BLOCK: #1,234,567
               </Badge>
             </div>
           </div>
@@ -178,22 +188,22 @@ export const LandRegistry = () => {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="search" className="flex items-center space-x-2">
+          <TabsList className="grid w-full grid-cols-4 bg-retro-dark border-2 border-retro-terminal">
+            <TabsTrigger value="search" className="flex items-center space-x-2 font-terminal text-retro-terminal data-[state=active]:bg-retro-terminal data-[state=active]:text-retro-dark">
               <Search className="h-4 w-4" />
-              <span>Search Properties</span>
+              <span>SEARCH</span>
             </TabsTrigger>
-            <TabsTrigger value="register" className="flex items-center space-x-2">
+            <TabsTrigger value="register" className="flex items-center space-x-2 font-terminal text-retro-terminal data-[state=active]:bg-retro-terminal data-[state=active]:text-retro-dark">
               <Plus className="h-4 w-4" />
-              <span>Register Property</span>
+              <span>REGISTER</span>
             </TabsTrigger>
-            <TabsTrigger value="transactions" className="flex items-center space-x-2">
+            <TabsTrigger value="transactions" className="flex items-center space-x-2 font-terminal text-retro-terminal data-[state=active]:bg-retro-terminal data-[state=active]:text-retro-dark">
               <Clock className="h-4 w-4" />
-              <span>Transactions</span>
+              <span>LOGS</span>
             </TabsTrigger>
-            <TabsTrigger value="analytics" className="flex items-center space-x-2">
+            <TabsTrigger value="analytics" className="flex items-center space-x-2 font-terminal text-retro-terminal data-[state=active]:bg-retro-terminal data-[state=active]:text-retro-dark">
               <FileText className="h-4 w-4" />
-              <span>Analytics</span>
+              <span>STATS</span>
             </TabsTrigger>
           </TabsList>
 
@@ -213,26 +223,43 @@ export const LandRegistry = () => {
           </TabsContent>
 
           <TabsContent value="analytics">
-            <Card>
-              <CardHeader>
-                <CardTitle>Registry Analytics</CardTitle>
-                <CardDescription>Overview of blockchain activity</CardDescription>
+            <Card className="bg-retro-dark border-2 border-retro-terminal shadow-lg">
+              <CardHeader className="border-b border-retro-terminal">
+                <CardTitle className="font-retro text-retro-terminal text-xl tracking-wider">
+                  SYSTEM_ANALYTICS.LOG
+                </CardTitle>
+                <CardDescription className="font-terminal text-retro-phosphor">
+                  &gt; Overview of blockchain network activity
+                </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="pt-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="text-center p-6 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg">
-                    <div className="text-3xl font-bold text-primary">{properties.length}</div>
-                    <div className="text-sm text-muted-foreground">Total Properties</div>
-                  </div>
-                  <div className="text-center p-6 bg-gradient-to-br from-registry-blue/10 to-registry-blue/5 rounded-lg">
-                    <div className="text-3xl font-bold text-registry-blue">{transactions.length}</div>
-                    <div className="text-sm text-muted-foreground">Total Transactions</div>
-                  </div>
-                  <div className="text-center p-6 bg-gradient-to-br from-success/10 to-success/5 rounded-lg">
-                    <div className="text-3xl font-bold text-success">
-                      ${properties.reduce((sum, p) => sum + p.value, 0).toLocaleString()}
+                  <div className="text-center p-6 bg-retro-matrix/20 border border-retro-terminal rounded-lg relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-retro-terminal/10 to-transparent"></div>
+                    <div className="relative z-10">
+                      <div className="text-4xl font-retro font-bold text-retro-terminal animate-phosphor-glow">
+                        {properties.length}
+                      </div>
+                      <div className="text-sm text-retro-phosphor font-terminal mt-2">TOTAL_PROPERTIES</div>
                     </div>
-                    <div className="text-sm text-muted-foreground">Total Value</div>
+                  </div>
+                  <div className="text-center p-6 bg-retro-matrix/20 border border-retro-terminal rounded-lg relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-retro-terminal/10 to-transparent"></div>
+                    <div className="relative z-10">
+                      <div className="text-4xl font-retro font-bold text-retro-terminal animate-phosphor-glow">
+                        {transactions.length}
+                      </div>
+                      <div className="text-sm text-retro-phosphor font-terminal mt-2">TOTAL_TRANSACTIONS</div>
+                    </div>
+                  </div>
+                  <div className="text-center p-6 bg-retro-matrix/20 border border-retro-terminal rounded-lg relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-retro-terminal/10 to-transparent"></div>
+                    <div className="relative z-10">
+                      <div className="text-3xl font-retro font-bold text-retro-terminal animate-phosphor-glow">
+                        ${properties.reduce((sum, p) => sum + p.value, 0).toLocaleString()}
+                      </div>
+                      <div className="text-sm text-retro-phosphor font-terminal mt-2">TOTAL_VALUE</div>
+                    </div>
                   </div>
                 </div>
               </CardContent>
