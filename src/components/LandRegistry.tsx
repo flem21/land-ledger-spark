@@ -37,45 +37,9 @@ interface Transaction {
 }
 
 // Mock data
-const mockProperties: Property[] = [
-  {
-    id: '0x1a2b3c4d',
-    address: '123 Maple Street, Springfield',
-    owner: 'John Smith',
-    area: 2500,
-    propertyType: 'Residential',
-    registrationDate: '2023-01-15',
-    value: 450000,
-    status: 'active',
-    coordinates: { lat: 40.7128, lng: -74.0060 },
-    documentHash: '0xabc123def456...'
-  },
-  {
-    id: '0x2e3f4g5h',
-    address: '456 Oak Avenue, Springfield',
-    owner: 'Sarah Johnson',
-    area: 1800,
-    propertyType: 'Residential',
-    registrationDate: '2023-03-22',
-    value: 320000,
-    status: 'active',
-    coordinates: { lat: 40.7589, lng: -73.9851 },
-    documentHash: '0xdef456ghi789...'
-  }
-];
+const mockProperties: Property[] = [];
 
-const mockTransactions: Transaction[] = [
-  {
-    id: 'tx_001',
-    propertyId: '0x1a2b3c4d',
-    fromOwner: 'Michael Brown',
-    toOwner: 'John Smith',
-    timestamp: '2023-01-15T10:30:00Z',
-    value: 450000,
-    status: 'completed',
-    blockHash: '0xblock123...'
-  }
-];
+const mockTransactions: Transaction[] = [];
 
 export const LandRegistry = () => {
   const [properties, setProperties] = useState<Property[]>(mockProperties);
